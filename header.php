@@ -8,7 +8,7 @@
                 <a class="nav-link" href="index.php">Početna</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Knjige</a>
+                <a class="nav-link" href="knjige.php">Knjige</a>
             </li>
         </ul>
     </div>
