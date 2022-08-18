@@ -1,6 +1,7 @@
 <?php
-include "dbBroker.php";
+require "dbBroker.php";
 include "./model/books.php";
+
 if (isset($_POST['input'])) {
     $input = $_POST['input'];
 
@@ -13,13 +14,14 @@ if (isset($_POST['input'])) {
 
     if (mysqli_num_rows($result) > 0) {
 ?>
-        <table class="table  table-warning table-striped mt-5 pt-5">
+        <table class="table  table-warning table-striped mt-5 pt-5" id="table1">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Naziv</th>
                     <th scope="col">Autor</th>
                     <th scope="col">Rok za vraćanje</th>
+                    <th scope="col">Zaduži</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,10 +29,17 @@ if (isset($_POST['input'])) {
                 while ($row = $result->fetch_assoc()) :
                 ?>
                     <tr>
-                        <td><?php echo $row['id'] ?></td>
+                        <!-- <div class="form-group"> -->
+                        <td id="myrow"><?php echo $row['id'] ?></td>
                         <td><?php echo $row['title'] ?></td>
                         <td><?php echo $row['author'] ?></td>
-                        <td><?php echo $row['deadline'] ?></td>
+                        <td name="deadline"><?php echo  $row['deadline'] ?></td>
+                        <td><?php if ($row['deadline'] == null) { ?>
+
+                                <button id="btnZaduzi" type="submit" class="btn btn-warning btn-block" onclick="zaduzi()">Zaduži</button>
+                                <!-- </div> -->
+                            <?php } ?>
+                        </td>
                     </tr>
                 <?php
                 endwhile;
@@ -44,3 +53,8 @@ if (isset($_POST['input'])) {
     }
 }
 ?>
+
+
+<script>
+    <?php require_once("./js/main.js"); ?>
+</script>
