@@ -37,10 +37,18 @@ class Book
         return $conn->query($query);
     }
 
-    #update
-    public function update($id, mysqli $conn)
+    #razduzi
+    public function razduzi($id, mysqli $conn)
     {
         $query = "UPDATE books set person = $this->null,deadline = $this->null WHERE id=$id";
+        return $conn->query($query);
+    }
+    public static function zaduzi($id, $deadline, $username, mysqli $conn)
+    {
+        //$query = "UPDATE books set person = $username,deadline = $deadline WHERE id=$id";
+        //$query = "UPDATE books set person = $username,deadline= $deadline WHERE id=$id";
+        $query = "UPDATE books SET person =  '$username', deadline =  '$deadline' WHERE id = '$id'";
+        //$query = "UPDATE books SET person = " . $username . " , deadline = " . $deadline . " WHERE id = " . $id;
         return $conn->query($query);
     }
 
