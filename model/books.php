@@ -3,7 +3,7 @@ class Book
 {
     public $id;
     public $title;
-    public $autor;
+    public $author;
     public $person;
     public $deadline;
 
@@ -11,7 +11,7 @@ class Book
     {
         $this->id = $id;
         $this->title = $title;
-        $this->autor = $author;
+        $this->author = $author;
         $this->person = $person;
         $this->deadline = $deadline;
     }
@@ -55,7 +55,7 @@ class Book
     #insert add
     public static function add(Book $book, mysqli $conn)
     {
-        $query = "INSERT INTO books(id, title, autor, person, deadline) VALUES('$book->id','$book->title','$book->autor','$book->person','$book->deadline')";
+        $query = "INSERT INTO books (id, title, author, person, deadline) VALUES ('$book->id', '$book->title', '$book->author', NULL, NULL)";
         return $conn->query($query);
     }
 }
