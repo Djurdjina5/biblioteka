@@ -4,9 +4,12 @@ include "./model/books.php";
 if (isset($_POST['input'])) {
     $input = $_POST['input'];
 
-    $query = "SELECT id,title,author,deadline FROM books WHEERE title LIKE '{$input}%'";
-    $result = mysqli_query($conn, $query);
-    
+    $query = sprintf(
+        "SELECT id,title,author,deadline FROM books WHERE title LIKE '%s%%'",
+        mysqli_real_escape_string($conn, $input)
+    );
+    $result = $conn->query($query);
+
 
     if (mysqli_num_rows($result) > 0) {
 ?>
@@ -21,7 +24,7 @@ if (isset($_POST['input'])) {
             </thead>
             <tbody>
                 <?php
-                while ($row = mysqli_fetch_assoc($result)) :
+                while ($row = $result->fetch_assoc()) :
                 ?>
                     <tr>
                         <td><?php echo $row['id'] ?></td>
@@ -37,7 +40,7 @@ if (isset($_POST['input'])) {
         </table>
 <?php
     } else {
-        echo "<h6 class='text-danger text-center mt-3'>No data found</h6>";
+        echo "<h6 class='text-danger text-center mt-3'>Nisu nađeni rezultati</h6>";
     }
 }
 ?>
