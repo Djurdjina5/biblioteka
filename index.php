@@ -52,8 +52,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 </head>
 
 <body>
-    <?php include "header.php"
-    ?>
+    <nav class="navbar navbar-expand navbar-light bg-warning fixed-top">
+        <a class="navbar-brand" href="#">
+            <img src="./img/books.png" width="30" height="30" alt="">Biblioteka</a>
+    </nav>
     <div class="login-form">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-left align-items-center h-100">
