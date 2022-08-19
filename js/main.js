@@ -51,4 +51,26 @@ function dodaj(){
                 $('#error').html("Greška" + errorThrown);
             }
         });
-  }
+}
+function izbrisi(){
+ var id = document.getElementById("red").childNodes[0].nodeValue;
+    console.log(id);
+    // $.ajax({
+    //         url: './handler/delete.php',
+    //         type: 'POST',
+    //         data: {'id': id},
+    //         success: function(data){
+    //             if (data) {
+    //             console.log("deleted");
+    //             } else {
+    //                 $('#error').load("custom/static/error.html");
+    //             }
+    //         },
+    //         error: function(jqXHR, textStatus, errorThrown){
+    //             $('#error').html("Greška" + errorThrown);
+    //         }
+    //     });
+}
+
+
+
