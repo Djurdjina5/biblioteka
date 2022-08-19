@@ -36,11 +36,16 @@ class Book
         $query = "DELETE FROM books WHERE id=$this->id";
         return $conn->query($query);
     }
+    public static function delete($id, mysqli $conn)
+    {
+        $query = "DELETE FROM books WHERE id='$id'";
+        return $conn->query($query);
+    }
 
     #razduzi
-    public function razduzi($id, mysqli $conn)
+    public static function razduzi($id, mysqli $conn)
     {
-        $query = "UPDATE books set person = $this->null,deadline = $this->null WHERE id=$id";
+        $query = "UPDATE books set person=null,deadline=null WHERE id=$id";
         return $conn->query($query);
     }
     public static function zaduzi($id, $deadline, $username, mysqli $conn)
