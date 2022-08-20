@@ -51,7 +51,7 @@ $books = Book::getAll($conn);
         <div class="row d-flex justify-content-left text-center mt-5 pt-5">
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                 <h1>Spisak knjiga</h1>
-                <table class="table  table-warning table-striped mt-5 pt-5">
+                <table id="mytable" class="table  table-warning table-striped mt-5 pt-5">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
@@ -66,14 +66,14 @@ $books = Book::getAll($conn);
                         <?php
                         while ($row = $books->fetch_assoc()) :
                         ?>
-                            <tr>
-                                <td id="red"><?php echo $row['id'] ?></td>
-                                <td><?php echo $row['title'] ?></td>
-                                <td><?php echo $row['author'] ?></td>
-                                <td><?php echo $row['person'] ?></td>
-                                <td><?php echo $row['deadline'] ?></td>
+                            <tr id="<?php echo $row['id']; ?>">
+                                <td><?php echo $row['id']; ?></td>
+                                <td><?php echo $row['title']; ?></td>
+                                <td><?php echo $row['author']; ?></td>
+                                <td><?php echo $row['person']; ?></td>
+                                <td><?php echo $row['deadline']; ?></td>
                                 <td>
-                                    <button id="btnIzbrisi" type="button" class="btn btn-danger btn-block" onclick="izbrisi()">Izbrisi</button>
+                                    <button type="button" name="button" class="btn btn-danger delete" onclick="izbrisi(<?php echo $row['id']; ?>)">Izbrisi</button>
                                 </td>
                             </tr>
                         <?php
@@ -82,6 +82,32 @@ $books = Book::getAll($conn);
                         ?>
                     </tbody>
                 </table>
+                <script type="text/javascript">
+                    function izbrisi(id) {
+                        console.log(id);
+                        $(document).ready(function() {
+                            $.ajax({
+                                url: './handler/delete.php',
+                                type: 'POST',
+                                data: {
+                                    'id': id
+                                },
+                                success: function(data) {
+                                    if (data) {
+                                        console.log("deleted");
+                                    } else {
+                                        $('#error').load("custom/static/error.html");
+                                    }
+                                },
+                                error: function(jqXHR, textStatus, errorThrown) {
+                                    $('#error').html("Greška" + errorThrown);
+                                }
+                            });
+
+
+                        });
+                    }
+                </script>
             </div>
         </div>
     </div>
@@ -98,4 +124,5 @@ $books = Book::getAll($conn);
 
 <script>
     <?php require_once("./js/main.js"); ?>
+    src = "https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js";
 </script>
