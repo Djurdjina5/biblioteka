@@ -60,6 +60,7 @@ $books = Book::getAll($conn);
                             <th scope="col">Person</th>
                             <th scope="col">Rok za vraćanje</th>
                             <th scope="col">Izbriši</th>
+                            <th scope="col">Razduži</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,7 +74,13 @@ $books = Book::getAll($conn);
                                 <td><?php echo $row['person']; ?></td>
                                 <td><?php echo $row['deadline']; ?></td>
                                 <td>
-                                    <button type="button" name="button" class="btn btn-danger delete" onclick="izbrisi(<?php echo $row['id']; ?>)">Izbrisi</button>
+                                    <button type="button" name="buttonI" class="btn btn-danger delete" onclick="izbrisi(<?php echo $row['id']; ?>)">Izbrisi</button>
+                                </td>
+                                <td><?php if ($row['deadline'] != null) { ?>
+                                        <button type="button" name="buttonZ" class="btn btn-warning bnt-block" onclick="razduzi(<?php echo $row['id']; ?>)">Razduži</button>
+                                    <?php
+                                    }
+                                    ?>
                                 </td>
                             </tr>
                         <?php
@@ -103,8 +110,29 @@ $books = Book::getAll($conn);
                                     $('#error').html("Greška" + errorThrown);
                                 }
                             });
+                        });
+                    }
 
-
+                    function razduzi(id) {
+                        console.log(id);
+                        $(document).ready(function() {
+                            $.ajax({
+                                url: './handler/razduzi.php',
+                                type: 'POST',
+                                data: {
+                                    'id': id
+                                },
+                                success: function(data) {
+                                    if (data) {
+                                        console.log("razduzeno");
+                                    } else {
+                                        $('#error').load("custom/static/error.html");
+                                    }
+                                },
+                                error: function(jqXHR, textStatus, errorThrown) {
+                                    $('#error').html("Greška" + errorThrown);
+                                }
+                            });
                         });
                     }
                 </script>
