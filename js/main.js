@@ -52,9 +52,11 @@ function dodaj(){
             }
         });
 }
-function izbrisi(){
- var id = document.getElementById("red").childNodes[0].nodeValue;
-    console.log(id);
+
+
+
+
+ 
     // $.ajax({
     //         url: './handler/delete.php',
     //         type: 'POST',
@@ -70,7 +72,8 @@ function izbrisi(){
     //             $('#error').html("Greška" + errorThrown);
     //         }
     //     });
-}
+
+
 
 
 
