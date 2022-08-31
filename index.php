@@ -8,7 +8,6 @@ session_start();
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $uname = $_POST['username'];
     $upass = $_POST['password'];
-    error_log("usao sam ovde");
 
     $korisnik = new User($uname, $upass);
     $odg = User::logInUser($korisnik, $conn);
@@ -24,6 +23,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $_SESSION['username'] = $row['username'];
             $_SESSION['first_name'] = $row['first_name'];
             $_SESSION['last_name'] = $row['last_name'];
+            $_SESSION['type'] = $row['type'];
             $tip = $row['type'];
         }
         if ($tip == 'bibliotekar') {
