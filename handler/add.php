@@ -2,7 +2,6 @@
 require "../dbBroker.php";
 require "../model/books.php";
 session_start();
-error_log('pogodio me');
 if (!isset($_SESSION['username'])) {
     header('Location: index.php');
     exit();
