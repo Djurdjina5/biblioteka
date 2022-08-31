@@ -2,7 +2,7 @@
 require "dbBroker.php";
 require "./model/books.php";
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || $_SESSION['type'] == 'bibliotekar') {
     header('Location: index.php');
     exit();
 }
