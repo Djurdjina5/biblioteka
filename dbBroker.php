@@ -1,6 +1,6 @@
 <?php
-$host = "localhost:8111";
-$db = "biblioteka";
+$host = "localhost:3307";
+$db = "biblioteka2";
 $user = "root";
 $pass = "";
 
