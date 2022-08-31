@@ -43,8 +43,8 @@ $books = Book::getAll($conn);
                                 <th scope="col">Id</th>
                                 <th scope="col">Naziv</th>
                                 <th scope="col">Autor</th>
-                                <th scope="col">Person</th>
-                                <th scope="col">Rok za vraćanje</th>
+                                <!-- <th scope="col">Person</th>
+                                <th scope="col">Rok za vraćanje</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -55,8 +55,8 @@ $books = Book::getAll($conn);
                                     <td><?php echo $row['id'] ?></td>
                                     <td><?php echo $row['title'] ?></td>
                                     <td><?php echo $row['author'] ?></td>
-                                    <td><?php echo $row['person'] ?></td>
-                                    <td><?php echo $row['deadline'] ?></td>
+                                    <!-- <td><?php echo $row['person'] ?></td>
+                                    <td><?php echo $row['deadline'] ?></td> -->
                                 </tr>
                             <?php
                             endwhile;
