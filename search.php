@@ -29,7 +29,6 @@ if (isset($_POST['input'])) {
                 while ($row = $result->fetch_assoc()) :
                 ?>
                     <tr>
-                        <!-- <div class="form-group"> -->
                         <td id="myrow"><?php echo $row['id'] ?></td>
                         <td><?php echo $row['title'] ?></td>
                         <td><?php echo $row['author'] ?></td>
@@ -37,7 +36,6 @@ if (isset($_POST['input'])) {
                         <td><?php if ($row['deadline'] == null) { ?>
 
                                 <button id="btnZaduzi" type="submit" class="btn btn-warning btn-block" onclick="zaduzi()">Zaduži</button>
-                                <!-- </div> -->
                             <?php } ?>
                         </td>
                     </tr>
