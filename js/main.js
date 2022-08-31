@@ -1,5 +1,4 @@
 function zaduzi(){
-    //var data = document.getElementById(rowId).querySelectorAll(".row-data"); 
     var id = document.getElementById("myrow").childNodes[0].nodeValue;
     console.log(id);
 
@@ -57,21 +56,7 @@ function dodaj(){
 
 
  
-    // $.ajax({
-    //         url: './handler/delete.php',
-    //         type: 'POST',
-    //         data: {'id': id},
-    //         success: function(data){
-    //             if (data) {
-    //             console.log("deleted");
-    //             } else {
-    //                 $('#error').load("custom/static/error.html");
-    //             }
-    //         },
-    //         error: function(jqXHR, textStatus, errorThrown){
-    //             $('#error').html("Greška" + errorThrown);
-    //         }
-    //     });
+
 
 
 
