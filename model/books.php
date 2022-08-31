@@ -21,7 +21,6 @@ class Book
         return $conn->query($query);
     }
 
-    #funkcija getById
 
     public static function getByUser($username, mysqli $conn)
     {
@@ -29,20 +28,14 @@ class Book
         return $conn->query($query);
     }
 
-    #deleteById
 
-    public function deleteById(mysqli $conn)
-    {
-        $query = "DELETE FROM books WHERE id=$this->id";
-        return $conn->query($query);
-    }
+
     public static function delete($id, mysqli $conn)
     {
         $query = "DELETE FROM books WHERE id='$id'";
         return $conn->query($query);
     }
 
-    #razduzi
     public static function razduzi($id, mysqli $conn)
     {
         $query = "UPDATE books set person=null,deadline=null WHERE id=$id";
@@ -50,14 +43,12 @@ class Book
     }
     public static function zaduzi($id, $deadline, $username, mysqli $conn)
     {
-        //$query = "UPDATE books set person = $username,deadline = $deadline WHERE id=$id";
-        //$query = "UPDATE books set person = $username,deadline= $deadline WHERE id=$id";
+
         $query = "UPDATE books SET person =  '$username', deadline =  '$deadline' WHERE id = '$id'";
-        //$query = "UPDATE books SET person = " . $username . " , deadline = " . $deadline . " WHERE id = " . $id;
+
         return $conn->query($query);
     }
 
-    #insert add
     public static function add(Book $book, mysqli $conn)
     {
         $query = "INSERT INTO books (id, title, author, person, deadline) VALUES ('$book->id', '$book->title', '$book->author', NULL, NULL)";
