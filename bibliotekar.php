@@ -2,7 +2,7 @@
 require "dbBroker.php";
 require "./model/books.php";
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || $_SESSION['type'] == 'citalac') {
     header('Location: index.php');
     exit();
 }
@@ -51,7 +51,7 @@ $books = Book::getAll($conn);
         <div class="row d-flex justify-content-left text-center mt-5 pt-5">
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                 <h1>Spisak knjiga</h1>
-                <table id="mytable" class="table  table-warning table-striped mt-5 pt-5">
+                <table id="mytable" class="table  table-warning table-striped mt-5 pt-5 mb-5 pb-5">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
